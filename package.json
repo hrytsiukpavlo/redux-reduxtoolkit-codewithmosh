@@ -10,6 +10,7 @@
     "react-dom": "^16.8 || ^17.0 || ^18.0",
     "react-native": ">=0.59",
     "react-redux": "^7.2.1 || ^8.0.2",
-    "redux": "^4"
+    "redux": "^4",
+    "reselect": "^4.1.6"
   }
 }
