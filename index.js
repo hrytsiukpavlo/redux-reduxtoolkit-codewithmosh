@@ -1,13 +1,15 @@
-import configureStore from './store/configureStore';
-import {
-  bugAdded,
-  bugResolved,
-  getUnresolvedBugs,
-  bugAssignedToUser,
-  getBugByUser,
-} from './store/bugs';
-import { projectAdded } from './store/projects';
-import { userAdded } from './store/users';
+import configureStore from "./store/configureStore";
+// import {
+// 	bugAdded,
+// 	bugResolved,
+// 	getUnresolvedBugs,
+// 	bugAssignedToUser,
+// 	getBugByUser,
+// } from "./store/bugs";
+// import { projectAdded } from "./store/projects";
+// import { userAdded } from "./store/users";
+import * as actions from "./store/api";
+import { loadBugs, resolveBug, addBug, assignBugToUser } from "./store/bugs";
 
 const store = configureStore();
 
@@ -31,12 +33,22 @@ const store = configureStore();
 
 // console.log(unresolvedBugs);
 
-store.dispatch((dispatch, getState) => {
-  dispatch({ type: 'bugsReceived', bugs: [1, 2, 3] });
-  console.log(getState());
-});
+// store.dispatch((dispatch, getState) => {
+//   dispatch({ type: 'bugsReceived', bugs: [1, 2, 3] });
+//   console.log(getState());
+// });
 
-store.dispatch({
-  type: 'error',
-  payload: { message: 'An error occurred' },
-});
+// store.dispatch({
+//   type: 'error',
+//   payload: { message: 'An error occurred' },
+// });
+
+// store.dispatch(addBug({ description: "a" }));
+
+// setTimeout(() => store.dispatch(loadBugs()), 2000);
+
+store.dispatch(loadBugs());
+
+setTimeout(() => store.dispatch(resolveBug(1)), 2000);
+
+setTimeout(() => store.dispatch(assignBugToUser(1, 4)), 2000);
